@@ -1,116 +1,139 @@
-/* =========================
-   BASIC RESET
-========================= */
+/* ========== GLOBAL RESET ========== */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* =========================
-   NAVIGATION BAR
-========================= */
-#menuItems {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+}
+
+/* ========== HEADER + NAVIGATION ========== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #333;
-    padding: 10px;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Navigation button hover */
+nav a:hover {
+    background-color: #555;
+}
+
+/* ========== RECENT ARTICLES DROPDOWN ========== */
+#recentArticles {
     position: relative;
 }
 
-#menuItems button {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-right: 5px;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-}
-
-/* Hover effect on nav buttons */
-#menuItems button:hover {
-    background-color: #888;
-}
-
-/* =========================
-   RECENT ARTICLES DROPDOWN
-========================= */
 #jumpMenu {
     display: none;
     position: absolute;
-    top: 45px;
-    left: 10px;
+    top: 40px;
+    left: 0;
     background-color: #222;
     list-style: none;
-    padding: 10px;
-    width: 160px;
+    width: 180px;
 }
 
-/* Show jump menu when hovering Recent Articles */
-#recentArticles:hover + #jumpMenu,
-#jumpMenu:hover {
+/* Show menu on hover */
+#recentArticles:hover #jumpMenu {
     display: block;
 }
 
-/* Jump menu links */
 #jumpMenu a {
+    display: block;
+    padding: 8px 10px;
     color: #ccc;
     text-decoration: none;
-    padding: 5px;
-    display: block;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover on jump menu links */
+/* Jump menu link hover */
 #jumpMenu a:hover {
-    background-color: #555;
-    color: white;
+    background-color: #444;
+    color: #fff;
 }
 
-/* =========================
-   ARTICLE LAYOUT
-========================= */
+/* ========== LEFT JUMP MENU ========== */
+#sideMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: #111;
+    padding-top: 60px;
+}
+
+/* ========== MAIN CONTENT AREA ========== */
+main {
+    margin-left: 15%;
+    padding: 90px 20px 40px;
+}
+
+/* Article container */
 #container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: flex-start;
 }
 
-/* =========================
-   ARTICLE TRANSITIONS
-========================= */
+/* ========== ARTICLE STYLING ========== */
 article {
     width: 300px;
     padding: 15px;
-    background-color: #f4f4f4;
+    background-color: #f2f2f2;
     color: #aaa;
-    transition: color 2s ease, transform 2s ease;
+    transition: color 2s ease, transform 2s ease, background-color 2s ease;
 }
 
-/* Hover expand + darken */
+/* Article hover: darker + expand */
 article:hover {
     color: #222;
+    background-color: #e6e6e6;
     transform: scale(1.05);
 }
 
-/* =========================
-   FIRST LETTER STYLING
-========================= */
-article p:first-of-type::first-letter {
+/* First letter of article text */
+article p::first-letter {
     font-family: "Times New Roman", Times, serif;
     font-size: 36px;
     font-weight: bold;
 }
 
-/* =========================
-   READ MORE ARROW
-========================= */
-article a::after {
-    content: url("arrow.png");
-    margin-left: 6px;
-    vertical-align: middle;
+/* ========== READ MORE GOOGLE LINKS ========== */
+a[href*="google"] {
+    padding-right: 20px;
+    background: url("arrowarrow.png") no-repeat right center;
+    background-size: 14px;
 }
 
-/* =========================
-   THANK YOU LINK (OPTIONAL)
-========================= */
-#thanks a {
-    text-decoration: none;
+/* ========== THANK YOU BLOCK ========== */
+#thankyou {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
 }
